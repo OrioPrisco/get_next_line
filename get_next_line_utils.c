@@ -57,7 +57,7 @@ int	ft_strjoin_overflow(char **previous, char *buffer)
 	if (*previous)
 		ft_strlcpy(str, *previous, lprev + 1);
 	ft_strlcpy(str + lprev, buffer, lbuff + 1);
-	ft_strlcpy(buffer, next + (*next == '\n'), BUFFER_SIZE - lbuff);
+	ft_strlcpy(buffer, next + (*next == '\n'), BUFFER_SIZE + 1 - lbuff);
 	free(*previous);
 	*previous = str;
 	return (*next == '\n');
