@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
+#include <stdlib.h>
+
 char	*ft_strchrnul(const char *s, char c)
 {
 	if (c == '\0')
@@ -20,7 +23,7 @@ char	*ft_strchrnul(const char *s, char c)
 			return ((char *)s);
 		s++;
 	}
-	return (s);
+	return ((char *)s);
 }
 
 size_t	ft_strlen(const char *c)
@@ -36,15 +39,15 @@ size_t	ft_strlen(const char *c)
 //joins *previous and buffer into previous up until a \n.
 //Things after the \n gets copied into buffer
 //returns wether a \n was seen
-bool	ft_strjoin_overflow(char **previous, char *buffer)
+int	ft_strjoin_overflow(char **previous, char *buffer)
 {
 	char	*str;
 	char	*next;
 	size_t	lprev;
 	size_t	lbuff;
 
-	next = strrchrnul(lbuff, '\n');
-	lbuff = next - buffer;
+	next = ft_strchrnul(buffer, '\n');
+	lbuff = next - buffer + (!*next);
 	lprev = 0;
 	if (previous)
 	{
@@ -55,8 +58,25 @@ bool	ft_strjoin_overflow(char **previous, char *buffer)
 		ft_strlcpy(str, *previous, lprev + 1);
 	}
 	ft_strlcpy(str + lprev, buffer, lbuff + 1);
-	ft_strlcpy(buffer, next);
+	ft_strlcpy(buffer, next, BUFFER_SIZE - lbuff);
 	free(*previous);
 	*previous = str;
 	return (*next == '\n');
+}
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	if (size != 0)
+	{
+		while ((i < size - 1) && src[i])
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (ft_strlen(src));
 }
