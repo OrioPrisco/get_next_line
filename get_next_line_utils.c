@@ -49,14 +49,13 @@ int	ft_strjoin_overflow(char **previous, char *buffer)
 	next = ft_strchrnul(buffer, '\n');
 	lbuff = next - buffer + (!*next);
 	lprev = 0;
-	if (previous)
-	{
+	if (*previous)
 		lprev = ft_strlen(*previous);
-		str = malloc(lprev + lbuff + 1);
-		if (!str)
-			return (0);
+	str = malloc(lprev + lbuff + 1);
+	if (!str)
+		return (0);
+	if (*previous)
 		ft_strlcpy(str, *previous, lprev + 1);
-	}
 	ft_strlcpy(str + lprev, buffer, lbuff + 1);
 	ft_strlcpy(buffer, next, BUFFER_SIZE - lbuff);
 	free(*previous);
