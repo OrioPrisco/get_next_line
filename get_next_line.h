@@ -14,7 +14,10 @@
 # define GET_NEXT_LINE_H
 
 # include <stddef.h>
-# define BUFFER_SIZE 100
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
 char	*get_next_line(int fd);
 char	*ft_strchrnul(const char *s, char c);
