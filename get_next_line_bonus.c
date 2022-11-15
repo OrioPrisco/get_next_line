@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 	char		*str;
 	ssize_t		bytes_read;
 
-	if (fd <= 0)
+	if (fd < 0 || fd >= FOPEN_MAX)
 		return (0);
 	str = 0;
 	if (buffer[fd][0])
