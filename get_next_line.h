@@ -14,12 +14,12 @@
 # define GET_NEXT_LINE_H
 
 # include <stddef.h>
-#define BUFFER_SIZE 100
+# define BUFFER_SIZE 100
 
 char	*get_next_line(int fd);
 char	*ft_strchrnul(const char *s, char c);
 size_t	ft_strlen(const char *c);
-int	ft_strjoin_overflow(char **previous, char *buffer);
+int		ft_strjoin_overflow(char **previous, char *buffer);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 
 #endif
