@@ -59,13 +59,13 @@ int	ft_strjoin_overflow(char **previous, char *buffer)
 	if (*previous)
 		ft_strlcpy(str, *previous, lprev + 1);
 	ft_strlcpy(str + lprev, buffer, lbuff + 1);
-	ft_strlcpy(buffer, next + next_is_newline, BUFFER_SIZE + 1 - lbuff);
+	ft_strlcpy(buffer, next + next_is_newline, BUFFER_SIZE + 1);
 	free(*previous);
 	*previous = str;
 	return (next_is_newline);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
 	size_t	i;
 
@@ -75,9 +75,10 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		while ((i < size - 1) && src[i])
 		{
 			dest[i] = src[i];
+			src[i] = 0;
 			i++;
 		}
-		dest[i] = '\0';
+		dest[i] = 0;
 	}
 	return (ft_strlen(src));
 }

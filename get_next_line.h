@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,13 +16,13 @@
 # include <stddef.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 100
 # endif
 
 char	*get_next_line(int fd);
 char	*ft_strchrnul(const char *s, char c);
 size_t	ft_strlen(const char *c);
 int		ft_strjoin_overflow(char **previous, char *buffer);
-size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+size_t	ft_strlcpy(char *dest, char *src, size_t size);
 
 #endif
