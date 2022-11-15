@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -45,9 +45,11 @@ int	ft_strjoin_overflow(char **previous, char *buffer)
 	char	*next;
 	size_t	lprev;
 	size_t	lbuff;
+	int		next_is_newline;
 
 	next = ft_strchrnul(buffer, '\n');
-	lbuff = next - buffer + (*next == '\n');
+	next_is_newline = (*next == '\n');
+	lbuff = next - buffer + next_is_newline;
 	lprev = 0;
 	if (*previous)
 		lprev = ft_strlen(*previous);
@@ -57,10 +59,10 @@ int	ft_strjoin_overflow(char **previous, char *buffer)
 	if (*previous)
 		ft_strlcpy(str, *previous, lprev + 1);
 	ft_strlcpy(str + lprev, buffer, lbuff + 1);
-	ft_strlcpy(buffer, next + (*next == '\n'), BUFFER_SIZE + 1 - lbuff);
+	ft_strlcpy(buffer, next + next_is_newline, BUFFER_SIZE + 1 - lbuff);
 	free(*previous);
 	*previous = str;
-	return (*next == '\n');
+	return (next_is_newline);
 }
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
