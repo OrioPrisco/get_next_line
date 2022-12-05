@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 11:19:28 by OrioPrisc         #+#    #+#             */
-/*   Updated: 2022/11/12 17:45:36 by OrioPrisc        ###   ########.fr       */
+/*   Updated: 2022/11/12 17:02:03 by OrioPrisc        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "getnextline.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "libft.h"
 
 char	*get_next_line(int fd)
 {

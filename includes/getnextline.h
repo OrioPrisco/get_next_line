@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   getnextline.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GETNEXTLINE_H
+# define GETNEXTLINE_H
 
 # include <stddef.h>
 
@@ -20,9 +20,7 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strchrnul(const char *s, char c);
-size_t	ft_strlen(const char *c);
 int		ft_strjoin_overflow(char **previous, char *buffer);
-size_t	ft_strlcpy(char *dest, char *src, size_t size);
+size_t	ft_strlcpy_zero(char *dest, char *src, size_t size);
 
 #endif

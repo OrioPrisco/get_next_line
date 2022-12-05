@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: OrioPrisco <47635210+OrioPrisco@users      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,31 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "getnextline.h"
+#include "libft.h"
 #include <stdlib.h>
-
-char	*ft_strchrnul(const char *s, char c)
-{
-	if (c == '\0')
-		return ((char *)s + ft_strlen(s));
-	while (*s)
-	{
-		if (*s == c)
-			return ((char *)s);
-		s++;
-	}
-	return ((char *)s);
-}
-
-size_t	ft_strlen(const char *c)
-{
-	size_t	len;
-
-	len = 0;
-	while (*c++)
-		len++;
-	return (len);
-}
 
 //joins *previous and buffer into previous up until a \n.
 //Things after the \n gets copied into buffer
@@ -57,15 +35,15 @@ int	ft_strjoin_overflow(char **previous, char *buffer)
 	if (!str)
 		return (0);
 	if (*previous)
-		ft_strlcpy(str, *previous, lprev + 1);
-	ft_strlcpy(str + lprev, buffer, lbuff + 1);
-	ft_strlcpy(buffer, next + next_is_newline, BUFFER_SIZE + 1);
+		ft_strlcpy_zero(str, *previous, lprev + 1);
+	ft_strlcpy_zero(str + lprev, buffer, lbuff + 1);
+	ft_strlcpy_zero(buffer, next + next_is_newline, BUFFER_SIZE + 1);
 	free(*previous);
 	*previous = str;
 	return (next_is_newline);
 }
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+size_t	ft_strlcpy_zero(char *dest, char *src, size_t size)
 {
 	size_t	i;
 
